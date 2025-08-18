@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión - Parqueo</title>
+
+    <!-- Carga de iconos con Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #87CEEB; /* Fondo azul cielo */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            width: 400px;
+            background-color: rgb(5, 144, 236);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 70%;
+            padding: 8px;
+            border: 1px solid #07a4ec;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            padding: 8px 8px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-ingresar {
+            background-color: #8B0000; /* Rojo oscuro */
+        }
+
+        .btn-salir {
+            background-color: #8B0000; /* Rojo oscuro */
+        }
+
+        .icon-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .icon {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 4px;
+            padding: 8px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Icono de usuario/candado en la esquina superior derecha -->
+        <div class="icon-container">
+            <img src="/images/Banned.png" alt="Usuario y candado" class="icon">
+        </div>
+
+        <!-- Formulario de login -->
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label>Usuario:</label>
+                <input type="text" name="usuario" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" name="pasword" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-ingresar">
+                    <img src="/images/guardar.png" alt="Ingresar" style="width: 16px; height: 16px; margin-right: 5px;"> Ingresar
+                </button>
+                <button type="button" class="btn btn-salir" onclick="window.location.href='/'">
+                    <img src="/images/salir.gif" alt="Salir" style="width: 16px; height: 16px; margin-right: 5px;"> Salir
+                </button>
+            </div>
+        </form>
+
+        <!-- Mensaje de error si las credenciales son incorrectas -->
+        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+    </div>
+</body>
+</html>
