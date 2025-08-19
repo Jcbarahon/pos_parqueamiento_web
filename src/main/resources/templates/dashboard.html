@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>Dashboard - Parqueo</title>
 
-    <!-- Font Awesome para iconos (opcional, si usas íconos además de imágenes) -->
+    <!-- Font Awesome (sin espacios) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         body {
-            background-color: #e0e0e0; /* Gris claro */
+            background-color: #e0e0e0;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -81,12 +81,7 @@
             margin-right: 8px;
         }
 
-        .content {
-            padding: 30px;
-            min-height: calc(100vh - 40px);
-        }
-
-        /* Estilo para el submenú */
+        /* Submenú */
         .submenu {
             display: none;
             position: absolute;
@@ -100,8 +95,6 @@
             min-width: 200px;
         }
 
-        
-
         .dropdown-parent i.fa-chevron-right {
             margin-left: auto;
             font-size: 10px;
@@ -113,7 +106,7 @@
     <!-- Barra de herramientas -->
     <div class="toolbar">
 
-        <!-- Botón Archivo con menú desplegable -->
+        <!-- Archivo -->
         <div class="toolbar-item">
             <img src="/images/archivo.png" alt="Archivo" class="toolbar-icon"> Archivo
             <div class="dropdown-menu" id="menu-archivo">
@@ -123,14 +116,13 @@
             </div>
         </div>
 
-        <!-- Otros botones (sin menú por ahora) -->
-        <div class="toolbar-item" style="position: relative;">
+        <!-- Base de Datos -->
+        <div class="toolbar-item">
             <img src="/images/database.png" alt="Base de Datos" class="toolbar-icon"> Base de Datos
             <div class="dropdown-menu" id="menu-base-datos">
-                <!-- Opción: Clientes -->
                 <div class="dropdown-item dropdown-parent" data-target="submenu-clientes">
                     <i class="fas fa-users"></i> Clientes
-                    <i class="fas fa-chevron-right"></i> <!-- Flecha para indicar submenú -->
+                    <i class="fas fa-chevron-right"></i>
                 </div>
                 <div class="dropdown-menu submenu" id="submenu-clientes">
                     <a href="/clientes/nuevo" class="dropdown-item">
@@ -144,7 +136,6 @@
                     </a>
                 </div>
 
-                <!-- Opción: Usuarios -->
                 <div class="dropdown-item dropdown-parent" data-target="submenu-usuarios">
                     <i class="fas fa-user"></i> Usuarios
                     <i class="fas fa-chevron-right"></i>
@@ -161,17 +152,16 @@
                     </a>
                 </div>
 
-                <!-- Opción: Espacio -->
                 <div class="dropdown-item dropdown-parent" data-target="submenu-espacios">
                     <i class="fas fa-building"></i> Espacio
                     <i class="fas fa-chevron-right"></i>
                 </div>
                 <div class="dropdown-menu submenu" id="submenu-espacios">
                     <a href="/espacios/nuevo" class="dropdown-item">
-                        <i class="fas fa-user-plus"></i> Agregar
+                        <i class="fas fa-plus"></i> Agregar
                     </a>
                     <a href="/espacios/editar" class="dropdown-item">
-                        <i class="fas fa-user-edit"></i> Modificar
+                        <i class="fas fa-edit"></i> Modificar
                     </a>
                     <a href="/espacios/liberar" class="dropdown-item">
                         <i class="fas fa-undo"></i> Liberar espacio
@@ -179,7 +169,9 @@
                 </div>
             </div>
         </div>
-        <div class="toolbar-item" style="position: relative;">
+
+        <!-- Más -->
+        <div class="toolbar-item">
             <img src="/images/herramientas.png" alt="Más" class="toolbar-icon"> Mas.
             <div class="dropdown-menu" id="menu-mas">
                 <a href="/acerca-de" class="dropdown-item">
@@ -190,7 +182,9 @@
                 </a>
             </div>
         </div>
-        <div class="toolbar-item" style="position: relative;">
+
+        <!-- Ventas(POS) -->
+        <div class="toolbar-item">
             <img src="/images/cena.png" alt="Ventas" class="toolbar-icon"> Ventas(POS)
             <div class="dropdown-menu" id="menu-ventas">
                 <a href="/ventas/abrir-caja" class="dropdown-item">
@@ -198,56 +192,65 @@
                 </a>
             </div>
         </div>
-        <a href="#" class="toolbar-item">
+
+        <!-- Consultas Ventas -->
+        <div class="toolbar-item">
             <img src="/images/Consulta.png" alt="Consultas" class="toolbar-icon"> Consultas Ventas
-        </a>
-        <a href="#" class="toolbar-item">
+            <div class="dropdown-menu" id="menu-consultas">
+                <a href="/ventas/consultas-facturas" class="dropdown-item">
+                    <i class="fas fa-file-invoice"></i> Ventas
+                </a>
+            </div>
+        </div>
+
+        <!-- Vaciar base de datos -->
+        <div class="toolbar-item">
             <img src="/images/database.png" alt="Vaciar BD" class="toolbar-icon"> Vaciar base de datos
-        </a>
-        <a href="#" class="toolbar-item">
+            <div class="dropdown-menu" id="menu-vaciar-bd">
+                <a href="/vaciar-base-de-datos" class="dropdown-item" 
+                   onclick="return confirm('¿Estás seguro de vaciar la base de datos?');">
+                    <i class="fas fa-trash"></i> Confirmar vaciado
+                </a>
+            </div>
+        </div>
+
+        <!-- Caja -->
+        <div class="toolbar-item">
             <img src="/images/pagos.png" alt="Caja" class="toolbar-icon"> Caja
-        </a>
+            <div class="dropdown-menu" id="menu-caja">
+                <a href="/ventas/lista-cajas" class="dropdown-item">
+                    <i class="fas fa-clipboard-list"></i> Lista Cajas
+                </a>
+            </div>
+        </div>
     </div>
 
-
+    <!-- Script corregido -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Función para cerrar todos los menús
             function cerrarTodos() {
                 document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                    if (menu.id !== 'submenu-clientes' && 
-                        menu.id !== 'submenu-usuarios' && 
-                        menu.id !== 'submenu-espacios') {
+                    if (!menu.classList.contains('submenu')) {
                         menu.style.display = 'none';
                     }
                 });
                 document.querySelectorAll('.submenu').forEach(s => s.style.display = 'none');
             }
 
-            // Configurar cada botón del toolbar
-            const botones = document.querySelectorAll('.toolbar-item');
-
-            botones.forEach(btn => {
-                const menus = btn.querySelectorAll('.dropdown-menu');
-                if (menus.length === 0) return;
+            // Manejar todos los menús principales
+            document.querySelectorAll('.toolbar-item').forEach(btn => {
+                const menu = btn.querySelector('.dropdown-menu');
+                if (!menu) return;
 
                 btn.addEventListener('click', function (e) {
                     e.stopPropagation();
-                    const menu = menus[0];
-
-                    // Si es un submenú, no cerrar todos
-                    if (menu.classList.contains('submenu')) return;
-
-                    // Alternar visibilidad
                     const isBlock = menu.style.display === 'block';
                     cerrarTodos();
-                    if (!isBlock) {
-                        menu.style.display = 'block';
-                    }
+                    if (!isBlock) menu.style.display = 'block';
                 });
             });
 
-            // Mostrar submenús al hacer clic en "Clientes", "Usuarios", "Espacio", etc.
+            // Manejar submenús (Clientes, Usuarios, Espacio)
             document.querySelectorAll('.dropdown-parent').forEach(item => {
                 item.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -265,12 +268,10 @@
                 });
             });
 
-            // Cerrar menús si se hace clic fuera
-            document.addEventListener('click', function () {
-                cerrarTodos();
-            });
+            // Cerrar menús al hacer clic fuera
+            document.addEventListener('click', cerrarTodos);
 
-            // Evitar que el clic dentro de un menú lo cierre
+            // Evitar que clic dentro del menú lo cierre
             document.querySelectorAll('.dropdown-menu').forEach(menu => {
                 menu.addEventListener('click', function (e) {
                     e.stopPropagation();

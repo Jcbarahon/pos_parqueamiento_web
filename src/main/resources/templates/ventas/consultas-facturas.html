@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta de Facturas - Parqueo</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 24px;
+            color: #d35400;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .table-container {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Consulta de Facturas</h1>
+        </div>
+
+        <div class="form-group">
+            <label>Buscar Por</label>
+            <select>
+                <option value="cliente">cliente</option>
+                <option value="fecha">fecha</option>
+            </select>
+            <label>Cliente</label>
+            <input type="text" placeholder="Nombre del cliente">
+            <button class="btn btn-primary">Buscar</button>
+        </div>
+
+        <div class="table-container">
+            <!-- Aquí iría la tabla de resultados -->
+            <p style="text-align: center; margin-top: 100px;">Resultados aparecerán aquí...</p>
+        </div>
+
+        <div style="margin-top: 20px; text-align: center;">
+            <button class="btn btn-secondary">Mostrar Todos</button>
+            <button class="btn btn-success">Ver Detalle Factura</button>
+            <button class="btn btn-primary" onclick="window.print()">Imprimir</button>
+            <button class="btn btn-danger" onclick="window.close()">Cancelar</button>
+        </div>
+    </div>
+</body>
+</html>
