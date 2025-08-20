@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Consulta de Facturas - Parqueo</title>
+    <title>Liberar Espacio - Parqueo</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -47,11 +47,27 @@
             font-size: 14px;
         }
 
-        select, input[type="text"] {
+        input[type="text"] {
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
         }
 
         .btn {
@@ -68,72 +84,51 @@
             color: white;
         }
 
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
-        }
-
         .btn-danger {
             background-color: #dc3545;
             color: white;
-        }
-
-        .btn-success {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .table-container {
-            width: 100%;
-            height: 300px;
-            border: 1px solid #ccc;
-            margin-top: 20px;
-            overflow-y: auto;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1 class="title">Consulta de Facturas</h1>
+            <h1 class="title">Liberar Espacio</h1>
         </div>
 
         <div class="form-group">
-            <label>Buscar Por</label>
-            <select>
-                <option value="cliente">cliente</option>
-                <option value="fecha">fecha</option>
-            </select>
-            <label>Cliente</label>
-            <input type="text" placeholder="Nombre del cliente">
-            <button class="btn btn-primary">Buscar</button>
+            <label>ID</label>
+            <input type="text" id="idEspacio" placeholder="ID del espacio">
         </div>
 
         <div class="table-container">
-            <!-- Aquí iría la tabla de resultados -->
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Juan Barahona</td>
-                    <td>2025-08-19</td>
-                    <td>S/. 100.00</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>María López</td>
-                    <td>2025-08-18</td>
-                    <td>S/. 50.00</td>
-                </tr>
-            </tbody>
-            <p style="text-align: center; margin-top: 100px;">Resultados aparecerán aquí...</p>
+            <table id="tablaEspacios">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ZONA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>8</td>
+                        <td>espacio 1</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <div style="margin-top: 20px; text-align: center;">
-            <button class="btn btn-secondary">Mostrar Todos</button>
-            <button class="btn btn-success">Ver Detalle Factura</button>
-            <button class="btn btn-primary" onclick="window.print()">Imprimir</button>
+        <div style="margin-top: 20px; text-align: right;">
+            <button class="btn btn-primary" onclick="liberarEspacio()">Liberar Espacio</button>
             <button class="btn btn-danger" onclick="window.close()">Cancelar</button>
         </div>
     </div>
+
+    <script>
+        function liberarEspacio() {
+            const id = document.getElementById('idEspacio').value;
+            alert("Liberar espacio con ID: " + id);
+        }
+    </script>
 </body>
 </html>

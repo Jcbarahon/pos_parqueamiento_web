@@ -82,20 +82,11 @@ public class LoginController {
         return "usuarios/lista";
     }
 
-    @GetMapping("/usuarios/nuevo")
-    public String nuevoUsuario() {
-        return "usuarios/nuevo";
-    }
+  
 
-    @GetMapping("/usuarios/editar")
-    public String editarUsuario() {
-        return "usuarios/editar";
-    }
+   
 
-    @GetMapping("/usuarios/cambiar-password")
-    public String cambiarPassword() {
-        return "usuarios/cambiar-password";
-    }
+   
 
     // --- Rutas para Espacios ---
     @GetMapping("/espacios")
@@ -271,6 +262,30 @@ public class LoginController {
     public String testDb(Model model) {
         model.addAttribute("clientes", clienteRepo.findAll());
         return "clientes/lista";
-}
+    }
+    @GetMapping("/clientes/editar")
+    public String editarCliente(Model model) {
+        return "clientes/editar";
+    }
+
+    @GetMapping("/clientes/consultar")
+    public String consultarClientes(Model model) {
+        return "clientes/consultar";
+    }
+
+    @GetMapping("/usuarios/nuevo")
+    public String nuevoUsuario(Model model) {
+        return "usuarios/nuevo";
+    }
+
+    @GetMapping("/usuarios/editar")
+    public String editarUsuario(Model model) {
+        return "usuarios/editar";
+    }
+
+    @GetMapping("/usuarios/cambiar-password")
+    public String cambiarPassword(Model model) {
+        return "usuarios/cambiar-password";
+    }
 
 }

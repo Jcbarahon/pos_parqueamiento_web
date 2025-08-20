@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Agregar Nuevo Cliente - Parqueo</title>
+    <title>Nueva Espacio - Parqueo</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -71,6 +71,11 @@
             margin-right: 10px;
         }
 
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
         .btn-primary {
             background-color: #007bff;
             color: white;
@@ -80,54 +85,19 @@
             background-color: #dc3545;
             color: white;
         }
-
-        .btn-success {
-            background-color: #28a745;
-            color: white;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1 class="title">Agregar Nuevo Cliente</h1>
-            <img src="/images/contact.png" alt="Usuario" class="icon">
+            <h1 class="title">Nueva espacio</h1>
+            <img src="/images/estacio.png" alt="Espacio" class="icon">
         </div>
 
-        <form action="/clientes/registrar" method="post">
+        <form action="/espacios/registrar" method="post">
             <div class="form-group">
-                <label>Razón social</label>
-                <input type="text" name="razonSCliente" required>
-            </div>
-
-            <div class="form-group">
-                <label>RUC</label>
-                <input type="text" name="rucCliente" required>
-            </div>
-
-            <div class="form-group">
-                <label>Dirección</label>
-                <input type="text" name="direccionCliente" required>
-            </div>
-
-            <div class="form-group">
-                <label>Teléfono/celular</label>
-                <input type="text" name="telefonoCliente" required>
-            </div>
-
-            <div class="form-group">
-                <label>Nombre</label>
-                <input type="text" name="nombreCliente" required>
-            </div>
-
-            <div class="form-group">
-                <label>Apellidos</label>
-                <input type="text" name="apellidoCliente" required>
-            </div>
-
-            <div class="form-group">
-                <label>Correo</label>
-                <input type="text" name="correoCliente" required>
+                <label>Zona</label>
+                <input type="text" name="zona" required>
             </div>
 
             <button type="button" class="btn btn-success">Nuevo</button>

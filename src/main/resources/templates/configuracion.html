@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Configuración - Parqueo</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 24px;
+            color: #003366;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Configuracion</h1>
+        </div>
+
+        <div class="form-group">
+            <label>Nombre de empresa</label>
+            <input type="text" id="nombreEmpresa" placeholder="Nombre de empresa" value="tusolutionweb tutos">
+        </div>
+
+        <div class="form-group">
+            <label>Impuesto</label>
+            <input type="text" id="impuesto" placeholder="Impuesto" value="19">
+        </div>
+
+        <div class="form-group">
+            <label>Moneda</label>
+            <input type="text" id="moneda" placeholder="Moneda" value="sol">
+        </div>
+
+        <div class="form-group">
+            <label>Símbolo moneda</label>
+            <input type="text" id="simboloMoneda" placeholder="Símbolo moneda" value="/S">
+        </div>
+
+        <div class="form-group">
+            <label>Ruc/Doc. fiscal</label>
+            <input type="text" id="ruc" placeholder="Ruc/Doc. fiscal" value="20113322">
+        </div>
+
+        <div class="form-group">
+            <label>Celular</label>
+            <input type="text" id="celular" placeholder="Celular" value="95464564">
+        </div>
+
+        <div class="form-group">
+            <label>Dirección</label>
+            <input type="text" id="direccion" placeholder="Dirección" value="av. san francisco">
+        </div>
+
+        <div class="form-group">
+            <label>Dimensión x de la imagen</label>
+            <input type="text" id="dimensionX" placeholder="Dimensión x" value="310">
+        </div>
+
+        <div class="form-group">
+            <label>Dimensión y de la imagen</label>
+            <input type="text" id="dimensionY" placeholder="Dimensión y" value="160">
+        </div>
+
+        <div style="margin-top: 20px; text-align: right;">
+            <button class="btn btn-danger" onclick="window.close()">Cancelar</button>
+            <button class="btn btn-success" onclick="actualizarConfiguracion()">Actualizar</button>
+        </div>
+    </div>
+
+    <script>
+        function actualizarConfiguracion() {
+            alert("Configuración actualizada");
+        }
+    </script>
+</body>
+</html>

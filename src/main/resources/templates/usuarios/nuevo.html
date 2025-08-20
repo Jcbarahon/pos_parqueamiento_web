@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Agregar Nuevo Cliente - Parqueo</title>
+    <title>Agregar Nuevo Usuario - Parqueo</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -55,7 +55,7 @@
             font-size: 14px;
         }
 
-        input[type="text"] {
+        input[type="text"], input[type="password"], select {
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
@@ -71,6 +71,11 @@
             margin-right: 10px;
         }
 
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
         .btn-primary {
             background-color: #007bff;
             color: white;
@@ -80,54 +85,52 @@
             background-color: #dc3545;
             color: white;
         }
-
-        .btn-success {
-            background-color: #28a745;
-            color: white;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1 class="title">Agregar Nuevo Cliente</h1>
+            <h1 class="title">Agregar Nuevo Usuario</h1>
             <img src="/images/contact.png" alt="Usuario" class="icon">
         </div>
 
-        <form action="/clientes/registrar" method="post">
+        <form action="/usuarios/registrar" method="post">
             <div class="form-group">
-                <label>Razón social</label>
-                <input type="text" name="razonSCliente" required>
+                <label>Usuario</label>
+                <input type="text" name="usuario" required>
             </div>
 
             <div class="form-group">
-                <label>RUC</label>
-                <input type="text" name="rucCliente" required>
+                <label>Password</label>
+                <input type="password" name="pasword" required>
             </div>
 
             <div class="form-group">
-                <label>Dirección</label>
-                <input type="text" name="direccionCliente" required>
-            </div>
-
-            <div class="form-group">
-                <label>Teléfono/celular</label>
-                <input type="text" name="telefonoCliente" required>
+                <label>Tipo</label>
+                <select name="tipo" required>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Empleado">Empleado</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label>Nombre</label>
-                <input type="text" name="nombreCliente" required>
+                <input type="text" name="nombre" required>
             </div>
 
             <div class="form-group">
-                <label>Apellidos</label>
-                <input type="text" name="apellidoCliente" required>
+                <label>Apellido</label>
+                <input type="text" name="apellido" required>
             </div>
 
             <div class="form-group">
-                <label>Correo</label>
-                <input type="text" name="correoCliente" required>
+                <label>DNI</label>
+                <input type="text" name="dni" required>
+            </div>
+
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="text" name="telefono" required>
             </div>
 
             <button type="button" class="btn btn-success">Nuevo</button>
